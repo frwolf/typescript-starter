@@ -1,21 +1,21 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
+  - package-ecosystem: 'npm'
     # Location of package.json
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: "weekly"
-  - package-ecosystem: "docker"
+      interval: 'weekly'
+  - package-ecosystem: 'docker'
     # Look for a `Dockerfile` in the `root` directory
-    directory: "/"
+    directory: '/'
     ignore:
-      - dependency-name: "*"
-        versions: [">=23.0"]
+      - dependency-name: '*'
+        versions: ['>=23.0']
     schedule:
-      interval: "weekly"
-  - package-ecosystem: "github-actions"
+      interval: 'weekly'
+  - package-ecosystem: 'github-actions'
     # Workflow files stored in the default location of `.github/workflows`
     # You don't need to specify `/.github/workflows` for `directory`. You can use `directory: "/"`.
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'

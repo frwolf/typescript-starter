@@ -1,0 +1,9 @@
+{
+  // Markdownlint
+  // see https://github.com/markdownlint/markdownlint
+  "MD013": false, // MD013 - Line length
+  "MD026": {
+    "punctuation": ".,;:。，；：" // MD026 - Trailing punctuation in heading
+  },
+  "MD033": false // MD033 - Inline HTML
+}

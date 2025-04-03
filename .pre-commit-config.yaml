@@ -1,0 +1,36 @@
+exclude: "^\
+  (node_modules/.*)\
+  "
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files # prevents giant files from being committed.
+      - id: check-case-conflict # checks for files that would conflict in case-insensitive filesystems.
+      - id: check-executables-have-shebangs # Checks that non-binary executables have a proper shebang.
+      - id: check-merge-conflict # checks for files that contain merge conflict strings.
+      - id: check-json # checks json files for parsable syntax.
+      - id: check-shebang-scripts-are-executable # Checks that scripts with shebangs are executable.
+      - id: check-yaml # checks yaml files for parsable syntax.
+      - id: check-xml # checks xml files for parsable syntax.
+      - id: detect-private-key # detects the presence of private keys.
+      - id: end-of-file-fixer # ensures that a file is either empty, or ends with one newline.
+      - id: fix-byte-order-marker # removes utf-8 byte order marker.
+      - id: mixed-line-ending # replaces or checks mixed line ending.
+      - id: pretty-format-json # Checks that all your JSON files are pretty.
+        args:
+          - --autofix
+      - id: trailing-whitespace # trims trailing whitespace.
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck # check shell scripts against 'shellcheck' violations
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint # check dockerfiles for linting violations
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.44.0
+    hooks:
+      - id: markdownlint # check markdown files for linting violations

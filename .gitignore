@@ -2,9 +2,13 @@
 *.log
 **/.env
 **/data
+
 # TS
 **/node_modules/
 **/dist/
 
 # tests
 **/coverage/
+
+# repomix
+repomix-output.xml

@@ -8,7 +8,3 @@ export const validateConfig = async (config: Config): Promise<boolean> => {
   }
   return false;
 };
-
-export const notTestedFunction = async (): Promise<void> => {
-  console.log(`hey`);
-};

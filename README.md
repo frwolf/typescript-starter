@@ -1,3 +1,5 @@
+# TypeScript Starter 🔋
+
 ![TypeScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)
 ![Node.js](https://shields.io/badge/Node.js-417e38?logo=nodedotjs&logoColor=FFF&style=flat-square)
 ![ESLint](https://shields.io/badge/ESLint-4b32c3?logo=eslint&logoColor=FFF&style=flat-square)
@@ -9,9 +11,8 @@
 ![GitHub](https://shields.io/badge/GitHub-000?logo=github&logoColor=FFF&style=flat-square)
 [![Build Status](https://github.com/janik6n/typescript-starter/workflows/Code%20quality%20checks/badge.svg)](https://github.com/janik6n/typescript-starter/actions)
 
-# TypeScript Starter 🔋
-
 This is my batteries included TypeScript starter updated for 2025, with:
+
 - 🟩 [Node.js](https://nodejs.org/) 22
 - ✏️ [TypeScript](https://www.typescriptlang.org/) 5.8
 - 📚 ECMAScript Modules
@@ -23,6 +24,8 @@ This is my batteries included TypeScript starter updated for 2025, with:
 - 📦 production bundling with [esbuild](https://esbuild.github.io/)
 - 🐳 optional production ready [Docker](https://www.docker.com/) image creation
 - 🔁 GitHub Actions workflow to run code quality checks and tests
+- 🧊 [Repomix](https://repomix.com/): Pack your codebase into AI-friendly formats
+- ⚗️ [pre-commit](https://pre-commit.com) for managing and maintaining multi-language pre-commit hooks.
 
 This starter is more geared towards backend than frontend use.
 
@@ -38,9 +41,7 @@ This starter is more geared towards backend than frontend use.
 How to use this template?
 
 1. Make sure prerequisites are met.
-2. Download the repository as zip so you don't have to deal with git history of this repository.
-3. Delete `package-lock.json`.
-3. Replace `janik6n` in `package.json` with your own username, along with other info.
+2. Delete `package-lock.json`.
 3. Install dependencies by running `npm install` on the project root directory.
 4. Start developing. See below for available scripts.
 
@@ -50,13 +51,14 @@ Following scripts have been configured, and they should give ideas for further d
 
 ### ⚙️ Run development server
 
-To run TypeScript to JavaScript transpiling and to run transpiled `./dist/index.mjs` run `npm run dev`. Watch mode (a.k.a. *hot reloading*) is available with `npm run dev:watch`. Development serving is handled with [tsx](https://tsx.is/).
+To run TypeScript to JavaScript transpiling and to run transpiled `./dist/index.mjs` run `npm run dev`. Watch mode (a.k.a. _hot reloading_) is available with `npm run dev:watch`. Development serving is handled with [tsx](https://tsx.is/).
 
 ### 🚥 Run tests
 
 Test are run with [Vitest](https://vitest.dev/), and different test scenarios are handled with [Vitest workspaces](https://vitest.dev/guide/workspace.html).
 
 To run tests, you have a several of options:
+
 - Run all tests with `npm run test`.
 - Include coverage report with `npm run test:cov`.
 - Run unit tests with `npm run test:unit`. This runs all tests which are in files with name `*.unit.test.ts`.
@@ -80,6 +82,7 @@ The idea is to run [ESLint](https://eslint.org/) & [Prettier](https://prettier.i
 Build the production bundle with [esbuild](https://esbuild.github.io/) by running `npm run build`. Build is configured in `build.js`.
 
 Build command explained: `"build": "rimraf ./dist && npx tsc --noEmit && node build.js"`:
+
 - `rimraf ./dist`: delete ./dist folder
 - `npx tsc --noEmit`: run type checks
 - `node build.js`: build and bundle with esbuild, which does not do type checking, but it creates nice small bundles
@@ -105,6 +108,7 @@ Run the containerized app with `npm run start:container`.
 ## 🔬 Available VS Code configurations
 
 There are two debugger launch configurations included:
+
 - `Debug Current File` is meant to debug the currently active TypeScript file.
 - `Debug Current Test File` is same, but for test files.
 
@@ -112,57 +116,50 @@ There are two debugger launch configurations included:
 
 None as of now. 🦗
 
-## ✂️ What’s not inside
-
-Here are some things that *could be included* in a starter, but are not in this one:
-- Monorepo setup
-- Any particular app’s source code
-- Git pre-commit hooks
-
 ## 📚 Further reading
 
 ### TypeScript
 
-- https://www.typescriptlang.org/
+- <https://www.typescriptlang.org/>
 
 ### ESLint & Prettier
 
-- https://eslint.org/
-- https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-- https://prettier.io/
-- https://github.com/prettier/eslint-plugin-prettier
-- https://typescript-eslint.io/
+- <https://eslint.org/>
+- <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>
+- <https://prettier.io/>
+- <https://github.com/prettier/eslint-plugin-prettier>
+- <https://typescript-eslint.io/>
 
 ### Vitest
 
-- https://vitest.dev/
-- https://vitest.dev/guide/workspace.html
+- <https://vitest.dev/>
+- <https://vitest.dev/guide/workspace.html>
 
 ### VS Code TS debugging & Vitest
 
-- https://code.visualstudio.com/docs/typescript/typescript-debugging
-- https://code.visualstudio.com/docs/editor/testing
-- https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
-- https://marketplace.visualstudio.com/items?itemName=vitest.explorer
-- https://vitest.dev/guide/debugging
+- <https://code.visualstudio.com/docs/typescript/typescript-debugging>
+- <https://code.visualstudio.com/docs/editor/testing>
+- <https://code.visualstudio.com/docs/editor/debugging#_launch-configurations>
+- <https://marketplace.visualstudio.com/items?itemName=vitest.explorer>
+- <https://vitest.dev/guide/debugging>
 
 ### Tsx
 
-- https://tsx.is/
+- <https://tsx.is/>
 
 ### Esbuild
 
-- https://esbuild.github.io/
+- <https://esbuild.github.io/>
 
 ### Docker & Node.js
 
-- https://hub.docker.com/_/node
-- https://snyk.io/blog/choosing-the-best-node-js-docker-image/
-- https://docs.docker.com/build/checks/
+- <https://hub.docker.com/_/node>
+- <https://snyk.io/blog/choosing-the-best-node-js-docker-image/>
+- <https://docs.docker.com/build/checks/>
 
 ### GitHub
 
-- https://github.com/features/actions
+- <https://github.com/features/actions>
 
 ## 🔁 Changelog
 
@@ -170,4 +167,8 @@ Here are some things that *could be included* in a starter, but are not in this 
 
 ## ⚖️ License
 
-MIT [License](LICENSE). Copyright janik6n.
+MIT [License](LICENSE).
+
+## 👍 Acknowledgement
+
+Based od work by janik6n.

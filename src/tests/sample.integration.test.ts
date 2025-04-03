@@ -6,6 +6,7 @@ describe(`Integration test suite`, () => {
 
     expect(actual).toBeTruthy();
   });
+
   it(`should return false`, async () => {
     const actual = false;
 
