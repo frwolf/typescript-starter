@@ -3,6 +3,10 @@
   "bugs": {
     "url": "https://github.com/frwolf/typescript-starter/issues"
   },
+  "dependencies": {
+    "typescript-logging": "^2.2.0",
+    "typescript-logging-log4ts-style": "^2.2.0"
+  },
   "description": "TypeScript Starter",
   "devDependencies": {
     "@types/node": "^22.14.0",
