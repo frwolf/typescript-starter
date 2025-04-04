@@ -165,10 +165,10 @@ None as of now. 🦗
 
 [CHANGELOG](CHANGELOG.md)
 
+## 👍 Acknowledgments
+
+Based on work by janik6n.
+
 ## ⚖️ License
 
 MIT [License](LICENSE).
-
-## 👍 Acknowledgement
-
-Based od work by janik6n.

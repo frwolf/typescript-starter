@@ -2,8 +2,11 @@
   // Markdownlint
   // see https://github.com/markdownlint/markdownlint
   "MD013": false, // MD013 - Line length
+  "MD024": {
+    "siblings_only": true // MD024 - Multiple headings with the same content
+  },
   "MD026": {
-    "punctuation": ".,;:。，；：" // MD026 - Trailing punctuation in heading
+    "punctuation": "!?" // MD026 - Trailing punctuation in heading
   },
   "MD033": false // MD033 - Inline HTML
 }
