@@ -12,6 +12,11 @@
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
     "outDir": "./dist",
+    "paths": {
+      "@modelcontextprotocol/sdk/*": [
+        "./node_modules/@modelcontextprotocol/sdk/dist/esm/*"
+      ]
+    },
     "preserveConstEnums": true,
     "removeComments": false,
     "resolveJsonModule": true,

@@ -4,8 +4,10 @@
     "url": "https://github.com/frwolf/typescript-starter/issues"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.8.0",
     "typescript-logging": "^2.2.0",
-    "typescript-logging-log4ts-style": "^2.2.0"
+    "typescript-logging-log4ts-style": "^2.2.0",
+    "zod": "^3.24.2"
   },
   "description": "TypeScript Starter",
   "devDependencies": {
@@ -49,6 +51,8 @@
     "format": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "mcp": "tsx src/mcp-server.ts",
+    "mcp:watch": "tsx watch src/mcp-server.ts",
     "start": "node ./dist/index.mjs",
     "start:container": "docker run -it --rm $npm_package_name:$npm_package_version",
     "test": "vitest run --coverage.enabled=false",

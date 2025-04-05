@@ -1,9 +1,9 @@
 import * as esbuild from 'esbuild';
 
-const settings = {
+// Build the main application
+const mainSettings = {
   entryPoints: ['src/index.ts'],
   outfile: 'dist/index.mjs',
-
   platform: 'node',
   target: 'node22',
   format: 'esm',
@@ -14,4 +14,4 @@ const settings = {
   sourcemap: true
 };
 
-await esbuild.build(settings);
+await esbuild.build(mainSettings);
