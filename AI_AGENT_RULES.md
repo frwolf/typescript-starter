@@ -13,20 +13,24 @@ This guide aims to ensure high-quality, maintainable, and secure AI agent develo
 ## 2. Coding Standards
 
 - **Use TypeScript effectively:**
+
   - Leverage strong typing and interfaces.
   - Avoid using `any`; prefer explicit types.
   - Use enums and literal types for fixed sets of values.
 
 - **Linting & Formatting:**
+
   - Enforce linting rules via ESLint (`eslint.config.mjs`).
   - Use Prettier (`.prettierrc.json`) for consistent formatting.
   - Fix lint errors before committing.
 
 - **Naming Conventions:**
+
   - Use descriptive, meaningful names for variables, functions, classes, and files.
   - Follow camelCase for variables/functions, PascalCase for classes/types.
 
 - **Code Structure:**
+
   - Write modular, reusable components.
   - Separate concerns: prompt handling, tool integration, core logic.
   - Prefer composition over inheritance.
@@ -78,14 +82,17 @@ This guide aims to ensure high-quality, maintainable, and secure AI agent develo
 ## 4. Testing Guidelines
 
 - **Unit Tests:**
+
   - Cover all modules with unit tests (`*.unit.test.ts`).
   - Test individual functions and classes in isolation.
 
 - **Integration Tests:**
+
   - Test interactions between modules and with external tools/resources (`*.integration.test.ts`).
   - Use mocks/stubs for external dependencies when feasible.
 
 - **End-to-End (E2E) Tests:**
+
   - Test full agent workflows (`*.e2e.test.ts`).
   - Simulate real-world scenarios and user interactions.
 

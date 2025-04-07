@@ -21,6 +21,6 @@ const provider = Log4TSProvider.createProvider('ExampleProvider', {
  * @param name - The name of the logger.
  * @returns A Logger instance associated with the given name.
  */
-export function getLogger(name: string): Logger {
+export const getLogger = (name: string): Logger => {
   return provider.getLogger(name);
-}
+};

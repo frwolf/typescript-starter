@@ -1,7 +1,8 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { initializeMcpServer } from '../../mcp/mcpServer';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+
 import { getLogger } from '../../config/LogConfig';
+import { initializeMcpServer } from '../../mcp/mcpServer';
 
 // Mock the StdioServerTransport class to avoid real instantiation
 vi.mock('@modelcontextprotocol/sdk/server/stdio.js', () => {

@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 
 import type { Config } from '../models/config-model.js';
+
 import { validateConfig } from './utils.js';
 
 describe(`Utils test suite`, () => {

@@ -2,10 +2,10 @@
 
 import process from 'node:process';
 
-import type { Config } from './models/config-model.js';
-import { validateConfig } from './utils/utils.js';
 import { getLogger } from './config/LogConfig.js';
 import { initializeMcpServer } from './mcp/mcpServer.js';
+import type { Config } from './models/config-model.js';
+import { validateConfig } from './utils/utils.js';
 
 const log = getLogger('process');
 

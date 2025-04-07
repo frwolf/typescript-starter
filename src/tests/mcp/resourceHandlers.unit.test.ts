@@ -1,14 +1,20 @@
 import type { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { registerResourceHandlers } from '../../mcp/resources/resourceHandlers';
 import {
   ListResourcesRequestSchema,
   ReadResourceRequestSchema
 } from '@modelcontextprotocol/sdk/types.js';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+import { registerResourceHandlers } from '../../mcp/resources/resourceHandlers';
+import { Note } from '../../models/note';
+
+interface MockServer extends Partial<Server> {
+  setRequestHandler: ReturnType<typeof vi.fn>;
+}
 
 describe('registerResourceHandlers', () => {
-  let mockServer: { setRequestHandler: ReturnType<typeof vi.fn> };
-  let notes: Record<string, { title: string; content: string }>;
+  let mockServer: MockServer;
+  let notes: Record<string, Note>;
 
   beforeEach(() => {
     notes = {
@@ -36,7 +42,7 @@ describe('registerResourceHandlers', () => {
   });
 
   it('ListResourcesRequestSchema handler returns transformed notes', async () => {
-    registerResourceHandlers(mockServer, notes);
+    registerResourceHandlers(mockServer as unknown as Server, notes);
 
     const listHandler = mockServer.setRequestHandler.mock.calls.find(
       ([schema]) => schema === ListResourcesRequestSchema
@@ -98,7 +104,7 @@ describe('registerResourceHandlers', () => {
 
   it('ReadResourceRequestSchema handler throws error if note not found', async () => {
     // @ts-expect-error partial mock
-    registerResourceHandlers(mockServer as unknown as Server, notes);
+    registerResourceHandlers(mockServer, notes);
 
     const readHandler = mockServer.setRequestHandler.mock.calls.find(
       ([schema]) => schema === ReadResourceRequestSchema

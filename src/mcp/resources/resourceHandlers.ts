@@ -4,16 +4,22 @@ import {
   ReadResourceRequestSchema
 } from '@modelcontextprotocol/sdk/types.js';
 import type { Request } from '@modelcontextprotocol/sdk/types.js';
+import { z } from 'zod';
 
 /**
- * Register resource-related handlers on the MCP server.
- * @param server The MCP server instance
- * @param notes The notes storage object
+ * Registers resource-related handlers on the MCP server.
+ *
+ * Handlers:
+ * - ListResourcesRequest: Lists all available note resources.
+ * - ReadResourceRequest: Retrieves the content of a specific note resource by URI.
+ *
+ * @param server The MCP server instance.
+ * @param notes An object mapping note IDs to note objects containing title and content.
  */
-export function registerResourceHandlers(
+export const registerResourceHandlers = (
   server: Server,
   notes: { [id: string]: { title: string; content: string } }
-) {
+): void => {
   server.setRequestHandler(ListResourcesRequestSchema, async () => {
     return {
       resources: Object.entries(notes).map(([id, note]) => ({
@@ -32,7 +38,13 @@ export function registerResourceHandlers(
         throw new Error('Invalid request');
       }
 
-      const url = new URL(request.params.uri as string);
+      const paramsSchema = z.object({
+        uri: z.string().min(1, 'URI is required')
+      });
+
+      const { uri } = paramsSchema.parse(request.params);
+
+      const url = new URL(uri);
       const id = url.pathname.replace(/^\//, '');
       const note = notes[id];
 
@@ -43,7 +55,7 @@ export function registerResourceHandlers(
       return {
         contents: [
           {
-            uri: request.params.uri,
+            uri,
             mimeType: 'text/plain',
             text: note.content
           }
@@ -51,4 +63,4 @@ export function registerResourceHandlers(
       };
     }
   );
-}
+};

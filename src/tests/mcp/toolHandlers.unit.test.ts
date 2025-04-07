@@ -1,9 +1,10 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { registerToolHandlers } from '../../../src/mcp/tools/toolHandlers';
 import {
   ListToolsRequestSchema,
   CallToolRequestSchema
 } from '@modelcontextprotocol/sdk/types.js';
+import { describe, it, expect, beforeEach } from 'vitest';
+
+import { registerToolHandlers } from '../../../src/mcp/tools/toolHandlers';
 
 interface CallRequest {
   params?: {

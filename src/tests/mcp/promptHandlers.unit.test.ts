@@ -1,14 +1,21 @@
 import type { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { registerPromptHandlers } from '../../mcp/prompts/promptHandlers';
 import {
   ListPromptsRequestSchema,
   GetPromptRequestSchema
 } from '@modelcontextprotocol/sdk/types.js';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import type { MockInstance } from 'vitest';
+
+import { registerPromptHandlers } from '../../mcp/prompts/promptHandlers';
+import { Note } from '../../models/note';
+
+interface MockServer extends Partial<Server> {
+  setRequestHandler: ReturnType<typeof vi.fn>;
+}
 
 describe('registerPromptHandlers', () => {
-  let mockServer: { setRequestHandler: ReturnType<typeof vi.fn> };
-  let notes: Record<string, { title: string; content: string }>;
+  let mockServer: MockServer;
+  let notes: Record<string, Note>;
 
   beforeEach(() => {
     notes = {
@@ -19,6 +26,45 @@ describe('registerPromptHandlers', () => {
     mockServer = {
       setRequestHandler: vi.fn()
     };
+  });
+
+  it('GetPromptRequestSchema handler rethrows unexpected errors during param parsing', async () => {
+    const { registerPromptHandlers } = await import(
+      '../../mcp/prompts/promptHandlers'
+    );
+    const { z } = await import('zod');
+
+    const notes = {
+      '1': { title: 'Note One', content: 'Content of note one' }
+    };
+
+    const mockServer = {
+      setRequestHandler: vi.fn()
+    };
+
+    registerPromptHandlers(mockServer as unknown as Server, notes);
+
+    const getHandler = mockServer.setRequestHandler.mock.calls.find(
+      ([schema]) => schema === GetPromptRequestSchema
+    )![1]!;
+
+    // Mock parse to throw a non-Zod error
+    // Mock parse to throw a non-Zod error
+    const error = new Error('Unexpected error');
+    vi.spyOn(z.ZodObject.prototype, 'parse').mockImplementation(() => {
+      throw error;
+    });
+
+    const request = {
+      params: {
+        name: 'summarize_notes'
+      }
+    };
+
+    await expect(getHandler(request)).rejects.toThrow('Unexpected error');
+
+    // Restore original parse
+    (z.ZodObject.prototype.parse as unknown as MockInstance).mockRestore?.();
   });
 
   it('registers ListPromptsRequestSchema and GetPromptRequestSchema handlers', () => {
